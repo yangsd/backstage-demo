@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.system.bean.RoleMapper">
+
+    <resultMap id="roleMap" type="Role">
+        <id property="pk_role" column="pk_role" />
+        <result property="role" column="role"/>
+        <result property="description" column="description"/>
+        <result property="resourceIds" column="resource_ids"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 根据主键查询角色 -->
+    <select id="selectRoleById" resultType="Role" parameterType="Long">
+        select * from sys_role where pk_role = #{pk_role}
+    </select>
+
+    <!-- 查询所有角色 -->
+    <select id="selectAllRole" resultMap="roleMap">
+        select * from sys_role
+    </select>
+
+    <!-- 新增角色 -->
+    <insert id="insertRole" parameterType="Role">
+        insert into sys_role(role,description,resource_ids,status)
+        values(#{role},#{description}#{resource_ids},#{status})
+    </insert>
+
+    <!-- 更新角色 -->
+    <update id="updateRole" parameterType="Role">
+        update sys_role set role=#{role},description=#{description},resource_ids=#{resource_ids},status=#{status}
+        where pk_role = #{pk_role}
+    </update>
+
+    <!-- 删除角色 -->
+    <delete id="delete" parameterType="Long">
+        delete from sys_role where pk_role =#{pk_role}
+    </delete>
+</mapper>

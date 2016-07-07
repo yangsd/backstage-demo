@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.system.bean.UserMapper">
+
+    <resultMap id="userMap" type="User">
+        <id property="pk_user" column="pk_user" />
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="loginid" column="loginid"/>
+        <result property="email" column="email"/>
+        <result property="salt" column="salt"/>
+        <result property="roleid" column="roleid"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 根据主键查询用户 -->
+    <select id="selectUserById" resultType="User">
+        select * from city where id = #{id}
+    </select>
+
+    <!-- 根据登录名查询用户 -->
+    <select id="selectUserByLoginid" parameterType="String" resultType="User">
+        select * from sys_user u where u.loginid = #{loginid}
+    </select>
+
+    <!-- 查询所有用户 -->
+    <select id="selectAllUser" resultMap="userMap">
+        select * from sys_user
+    </select>
+
+    <!-- 新增用户 -->
+    <insert id="insertUser" parameterType="User">
+        insert into sys_user(loginid,email,roleid,password,salt,username,status)
+        values(#{loginid},#{email},#{roleid},#{password},#{salt},#{username},#{status})
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="updateUser" parameterType="User">
+        update sys_user set email = #{email},roleid=#{roleid},username=#{username},status=#{status}
+        where pk_user = #{pk_user}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="Long">
+        delete from sys_user where pk_user = #{pk_user}
+    </delete>
+</mapper>

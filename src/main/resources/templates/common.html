@@ -1,0 +1,46 @@
+<!-- 左侧菜单 -->
+<div th:fragment="menu">
+
+</div>
+
+<!-- 加载提示 -->
+<div th:fragment="loading" id="load"
+	style="left: 0px; position: absolute; top: 0px; background-color: red">
+	LOADING....</div>
+
+<!-- 引入header -->
+<head th:fragment="head">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" rel="stylesheet" type="text/css"/>
+	<link href="../../static/css/components-rounded.css" th:href="@{/css/components-rounded.css}" rel="stylesheet" type="text/css"/>	
+	<link href="../../static/css/plugins.css" th:href="@{/css/plugins.css}" rel="stylesheet" type="text/css"/>	
+	<link href="../../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+	<link href="../../static/css/uniform.default.min.css" th:href="@{/css/uniform.default.min.css}" rel="stylesheet" type="text/css"/>	
+	<link href="../../static/css/themes-default.css" th:href="@{/css/themes-default.css}" rel="stylesheet" type="text/css"/>	
+	<link href="../../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet" type="text/css"/>
+	<link href="../../static/css/simple-line-icons.min.css" th:href="@{/css/simple-line-icons.min.css}" rel="stylesheet" type="text/css"/>
+	<link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>	
+	<link href="../../static/css/login.css" th:href="@{/css/login.css}" rel="stylesheet" type="text/css"/>	
+	<link href="../../static/css/layout.css" th:href="@{/css/layout.css}" rel="stylesheet" type="text/css"/>
+	<title>后台管理系统</title>	
+</head>
+
+<!-- 引入js代码 -->
+<div th:fragment="js">
+	<script src="../../static/js/jquery-2.2.0.min.js" th:src="@{/js/jquery-2.2.0.min.js}"></script>
+	<script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<!--  
+	<script src="../../static/js/jquery-migrate.min.js" th:src="@{/js/jquery-migrate.min.js}"></script>
+	<script src="../../static/js/jquery.blockui.min.js" th:src="@{/js/jquery.blockui.min.js}"></script>
+	<script src="../../static/js/jquery.cokie.min.js" th:src="@{/js/jquery.cokie.min.js}"></script>
+	<script src="../../static/js/jquery.uniform.min.js" th:src="@{/js/jquery.uniform.min.js}"></script>
+	-->
+	<script src="../../static/js/jquery.validate.min.js" th:src="@{/js/jquery.validate.min.js}"></script>
+	<script src="../../static/js/metronic.js" th:src="@{/js/metronic.js}"></script>
+	<script src="../../static/js/layout.js" th:src="@{/js/layout.js}"></script>
+	<script src="../../static/js/demo.js" th:src="@{/js/demo.js}"></script>
+	<script src="../../static/js/login.js" th:src="@{/js/login.js}"></script>
+</div>
+
+<div th:fragment="copyright" class="copyright">
+	 2016 @ created by sdyang
+</div>

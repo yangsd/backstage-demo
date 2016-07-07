@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common::head"></head>
+<body class="login">
+<div class="menu-toggler sidebar-toggler">
+</div>
+
+<div class="logo">
+	<h2 style="color:#A9A9A9">后台管理系统</h2>
+</div>
+	
+<div class="content">
+	
+	<!-- 登录Form -->
+	<form class="login-form" action="/toLogin" method="post">
+		<h3 class="form-title">登录</h3>
+		<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			<span>
+			请输入用户名和密码： </span>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">用户名</label>
+			<input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="loginid"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="password"/>
+		</div>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-success uppercase">登录</button>
+			<label class="rememberme check">
+			<input type="checkbox" name="remember" value="1"/>记住我 </label>
+			<a href="javascript:;" id="forget-password" class="forget-password">忘记密码？</a>
+		</div>
+		
+		<div class="create-account">
+			<p>
+				<a href="javascript:;" id="register-btn" class="uppercase">创建新账号</a>
+			</p>
+		</div>
+	</form>
+	
+	<!-- 忘记密码Form -->
+	<form class="forget-form" action="/toFindPassword" method="get">
+		<h3>忘记密码？</h3>
+		<p>
+			 请输入您的邮箱地址重置密码。
+		</p>
+		<div class="form-group">
+			<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="邮箱地址" name="email"/>
+		</div>
+		<div class="form-actions">
+			<button type="button" id="back-btn" class="btn btn-default">返回</button>
+			<button type="submit" class="btn btn-success uppercase pull-right">提交</button>
+		</div>
+	</form>
+	
+	<!-- 注册Form -->
+	<form id="register-form" class="register-form" action="/toRegister" method="post">
+		<h3>注册</h3>
+		<p class="hint">
+			 请在下面填写您的个人信息：
+		</p>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">姓名</label>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="姓名" name="username"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">邮箱</label>
+			<input class="form-control placeholder-no-fix" type="text" placeholder="邮箱" name="email"/>
+		</div>		
+		
+		<p class="hint">
+			 请在下面填写您的账号信息：
+		</p>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">用户名</label>
+			<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="loginid"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">登录密码</label>
+			<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="password" placeholder="登录密码" name="password"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">请再次输入密码</label>
+			<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="请再次输入密码" id="rpassword"/>
+		</div>
+		
+		<div class="form-actions">
+			<button type="button" id="register-back-btn" class="btn btn-default">返回</button>
+			<button type="button" id="register-submit-btn" class="btn btn-success uppercase pull-right">提交</button>
+		</div>
+	</form>
+</div>
+
+<div th:include="common::copyright"></div>
+
+<div th:include="common::js"></div>
+
+<script type="text/javascript" language="javascript">
+	    //初始化验证码
+	    $(function(){
+	    	//setValidateCode();
+	    	
+	    	$("#register-submit-btn").click(function(){
+	    		if($("#password").val()==$("#rpassword").val()){
+	    		  $("#register-form").submit();
+	    		}else{
+	    			alert("两次密码输入不同，请重新输入！");
+	    		}
+	    	});
+	    	
+	    });
+	
+	    //单击更换验证码
+	    function changeImg(){
+	    	setValidateCode();
+	    };
+	
+	    function setValidateCode() {
+	    	$('img#codefont').attr('src', 'randomnum?num=' + new Date().getTime());
+	    }
+    </script>
+<script>
+jQuery(document).ready(function() {     
+	Metronic.init(); // init metronic core components
+	Layout.init(); // init current layout
+	Login.init();
+	Demo.init();
+});
+</script>
+</body>
+</html>

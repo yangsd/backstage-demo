@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.system.bean.ResourceMapper">
+
+    <resultMap id="resourceMap" type="Resource">
+        <id property="pk_resource" column="pk_resource" />
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="url" column="url"/>
+        <result property="permission" column="permission"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 根据主键查找资源 -->
+    <select id="selectResourceById" parameterType="Long" resultType="Resource">
+        select * from sys_resource where pk_resource = #{pk_resource}
+    </select>
+
+    <!-- 查询所有资源 -->
+    <select id="selectAllResource" resultMap="resourceMap">
+        select * from sys_resource
+    </select>
+
+    <!-- 新增资源 -->
+    <insert id="insertResource" parameterType="Resource">
+        insert into sys_resource(name,type,url,permission,parent_id,status)
+        values(#{name},#{type},#{url},#{permission},#{parent_id},#{status})
+    </insert>
+
+    <!-- 更新资源 -->
+    <update id="updateResource" parameterType="Resource">
+        update sys_resource set name=#{name},type=#{type},url=#{url},permission=#{permission},parent_id=#{parent_id},status=#{stauts}
+        where pk_resource=#{pk_resource}
+    </update>
+
+    <!-- 删除资源 -->
+    <delete id="delete" parameterType="Long">
+        delete from sys_resource where pk_resource=#{pk_resource}
+    </delete>
+</mapper>
